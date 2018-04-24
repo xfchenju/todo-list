@@ -1,17 +1,24 @@
 ;(function () {
-	//'use strict';
+	'use strict';
 	$(document).ready(()=>{
 		$('#submit').on('click', (e)=>{
 			e.preventDefault();
+			var time = new Date().getTime()
 			var data = {
-				'content': $('#add_task_input').val()
+				'content': $('#add_task_input').val(),
+				'time': time
 			}
-			if(!data) return;
+			if(!data.content) return;
 			addTask(data)
 		})
 		$('#task-list').on('click', (e)=>{
-			var $items = e
-			console.log($items)
+			var $items = e.target
+			var clickTag = $($items).attr('class')
+			if(clickTag == 'delete') {
+				var time = $($items).parent().attr('data-time')
+				delTask(time)
+				$($items).parent().remove()
+			}		
 		})
 		renderTaskList()
 	})
@@ -26,10 +33,12 @@
 		$taskList.append($taskItem)
 		$('#add_task_input').val("")
 	}
-	function delTask(data) {
-		var index = taskList.findIndex(n => n.content == data.content)
+	function delTask(time) {
+		var index = taskList.findIndex(n => n.time == time)
+		console.log(index)
 		if(index > -1){
 			taskList.splice(index, 1)
+			window.localStorage.setItem('task-list', JSON.stringify(taskList))
 		}
 	}
 	function renderTaskList() {
@@ -43,11 +52,11 @@
 	}
 	function renderTaskItem(data) {
 		var listItemTpl = 
-		'<li class="task-item">'+
+		'<li class="task-item" data-time="' + data.time + '">'+
 			'<span><input type="checkbox" name=""></span>'+
 			'<span class="task-content">' + data.content + '</span>'+
-			'<span>删除</span>'+
-			'<span>详情</span>'+
+			'<span class="delete">删除</span>'+
+			'<span class="detail">详情</span>'+
 		'</li>';
 		return $(listItemTpl);
 	}

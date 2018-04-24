@@ -100,5 +100,9 @@ body {
 	background: #ddd;
 	text-decoration: underline;
 }
-
-
+.delete {
+	float: right;
+}
+.detail {
+	float: right;
+}
