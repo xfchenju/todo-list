@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<title>My Todo App</title>
+	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<script src="./js/base.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="./css/base.css">
+</head>
+<body>
+	<!-- 总容器开始 -->
+	<div class="container">
+		<h1>我的Todo</h1>
+		<!-- 清单添加开始 -->
+		<div class="add-task clearfloat">
+			<input class="add-task-text" id="add_task_input" type="text" name="" value="" placeholder="e.g我要买...">
+			<button class="add-task-button" id="submit" type="submit">submit</button>
+		</div>
+		<!-- 清单添加结束 -->
+		<!-- 清单列表开始 -->
+		<ul class="task-list clearfloat" id="task-list">
+		</ul>
+		<!-- 清单列表结束 -->
+		<!-- 任务详情开始 -->
+		<div class="task-detail">
+			<div class="content"></div>
+			<div class="remark"></div>
+			<div>
+				<input type="date" name="">
+				<button></button>
+			</div>
+		</div>
+		<!-- 任务详情结束 -->
+	</div>
+	<!-- 总容器结束 -->
+</body>
+</html>

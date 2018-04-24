@@ -1,0 +1,104 @@
+* {
+	list-style: none;
+	background: #e5e5f7;
+	font-family: '微软雅黑'
+}
+ul, li {
+	padding: 0;
+	margin: 0;
+}
+body {
+	color: #333333;
+}
+
+/*清除浮动代码*/ 
+.clearfloat:after{
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+} 
+.clearfloat{
+	zoom: 1;
+} 
+
+.container {
+	margin: 0 auto;
+	max-width: 900px;
+	min-width: 600px;
+	text-align: center;
+}
+.add-task {
+	margin: 0 10px;
+	width: calc(100% - 20px);
+}
+.add-task-text {
+	float: left;
+	padding: 10px;
+	display: block;
+	width: calc(80% - 20px);
+	height: 24px;
+	background: #fff;
+	border: 0;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	font-size: 18px;
+}
+.add-task-button {
+	float: left;
+	display: block;
+	margin-left: 10px;
+	width: calc(20% - 10px);
+	height: 44px;
+	line-height: 44px;
+	background: #e2e2cc;
+	font-size: 24px;
+	color: #333;
+	border: 0;
+	border-radius: 3px;
+	outline: none;
+	cursor: pointer;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	
+}
+.add-task-button:hover {
+	background: #dedea6;
+}
+.task-list {
+	overflow: hidden;
+}
+.task-item {
+	padding: 10px;
+	margin: 10px;
+	width: calc(100% - 40px);
+	height: 22px;
+	line-height: 22px;
+	text-align: left;
+	font-size: 15px;
+	color: #333;
+	background: #fff;
+	border-radius: 3px;
+	transition: background .15s;
+	cursor: pointer;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+}
+.task-item:hover {
+	background: #ddd;
+}
+.task-item span {
+	color: #333;
+	background: #fff;
+}
+.task-item span:hover {
+	background: #ddd;
+	text-decoration: underline;
+}
+
+
