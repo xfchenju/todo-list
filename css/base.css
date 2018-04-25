@@ -1,6 +1,6 @@
 * {
 	list-style: none;
-	background: #e5e5f7;
+	background: #cecece;
 	font-family: '微软雅黑'
 }
 ul, li {
@@ -22,6 +22,12 @@ body {
 .clearfloat{
 	zoom: 1;
 } 
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
 
 .container {
 	margin: 0 auto;
@@ -64,45 +70,130 @@ body {
 	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
-	
 }
 .add-task-button:hover {
 	background: #dedea6;
 }
-.task-list {
-	overflow: hidden;
+.task-list { 
+	margin: 5px 10px;
+	width: calc(100% - 20px);
 }
-.task-item {
+.task-list .task-item {
+	margin: 0 0 5px 0;
 	padding: 10px;
-	margin: 10px;
-	width: calc(100% - 40px);
-	height: 22px;
-	line-height: 22px;
-	text-align: left;
-	font-size: 15px;
-	color: #333;
+	width: calc(100% - 20px);
+	height: 26px;
+	line-height: 26px;
+	border-radius: 4px;
 	background: #fff;
-	border-radius: 3px;
-	transition: background .15s;
-	cursor: pointer;
+	color: #333;
+	font-size: 18px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
 	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 }
-.task-item:hover {
-	background: #ddd;
+.task-list .task-item:hover {
+	transition: background .15s;
+	background: #e8e8e8;
 }
-.task-item span {
-	color: #333;
-	background: #fff;
+.task-list .task-item .item-content {
+	display: flex;
+	align-items: center;
+	vertical-align: middle;
+	float: left;
+	background: transparent;
+	width: calc(100% - 150px);
+	text-align: left;
 }
-.task-item span:hover {
-	background: #ddd;
+.task-list .task-item .item-content .item-checkbox {
+	margin-right: 4px;
+	background: transparent;
+}
+.task-list .task-item .item-content .item-text {
+	background: transparent;
+	width: calc(100% - 20px);
+	height: 26px;
+	line-height: 26px;
+	overflow: hidden;
+}
+.task-list .task-item .item-operation {
+	float: left;
+	background: transparent;
+	width: 150px;
+	text-align: right;
+}
+.task-list .task-item .item-operation .item-btn {
+	margin-right: 10px;
+	display: inline-block;
+	background: transparent;
+	cursor: pointer;
+}
+.task-list .task-item .item-operation .item-btn:hover {
 	text-decoration: underline;
 }
-.delete {
-	float: right;
+.task-list .task-item .item-operation .item-delete {
+	margin-right: 10px;
 }
-.detail {
-	float: right;
+.task-list .task-item .item-operation .item-detail {
+
+}
+.task-detail {
+	padding: 10px;
+	width: 300px;
+	background: #fff;
+	border-radius: 4px;	
+}
+.task-detail .content {
+	padding: 5px 4px;
+	width: calc(100% - 8px);
+	line-height: 28px;
+	text-align: left;
+	background: #fff;
+}
+.task-detail .remark {
+	margin-top: 5px;
+	width: 100%;
+	background: #fff;
+}
+.task-detail .remark textarea {
+	padding: 4px;
+	width: calc(100% - 8px);
+	min-height: 88px;
+	line-height: 22px;
+	background: #ddd;
+	border: 0;
+	border-radius: 4px;
+	resize: none;
+}
+.task-detail .date {
+	margin: 5px 0 10px;
+	width: 100%;
+	background: #fff;
+}
+.task-detail .date input {
+	width: 100%;
+	min-height: 36px;
+	background: #ddd;
+	border: 0;
+	border-radius: 4px;
+}
+.detail-btns {
+	width: 100%;
+	height: 30px;
+	background: #fff;
+}
+.detail-btns .detail-btn {
+	width: 80px;
+	height: 30px;
+	border: none;
+	border-radius: 4px;
+	background: #8e8e8e;
+	color: #fff;
+	font-size: 20px;
+	outline: none;
+	cursor: pointer;
 }
