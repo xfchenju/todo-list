@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>slider</title>
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/base.css">
+	<script type="text/javascript">
+		$(document).ready(()=>{
+			$('.dots').on('click', (e)=>{
+				e.preventDefault()
+				var $dot = e.target
+				var isDot = $($dot).hasClass('dot')
+				var activeDotIndex = $('.dots').find('.active').index()
+				if(isDot) {
+					addActiveClass($dot)
+					var index = $($dot).index()
+					var $item = $('.list').children()[index]
+					var diffLeft = 0 - parseInt($($item).css('left'))
+					itemsAnimate(diffLeft)
+				}
+
+				/*$('.list').children()
+				$('.item3').animate({left: "640px"}, 320)*/
+			})
+			initItemsLeft()
+			autoSlider()
+		})
+		var width = 640,
+			time = 320
+		function initItemsLeft() {
+			$('.item').each(function(){
+				var index = $(this).index()
+				var length = width * index
+				$(this).css({'left': length + 'px'})
+			})
+		}
+		function addActiveClass(dot) {
+			$(dot).parent().find('.active').removeClass('active')
+			$(dot).addClass('active')
+		}
+		function itemsAnimate(diffLeft) {
+			var length = $('.list .item').length
+
+			$('.item').each(function(){
+				var oldLeft = $(this).css('left')
+				var newLeft = parseInt(diffLeft) + parseInt(oldLeft)
+				if(Math.abs(newLeft) >= length * width) {
+					var w = 0 - newLeft
+					console.log(w)
+					$(this).animate({left: w + 'px'}, 320)
+				}else{
+					$(this).animate({left: newLeft + 'px'}, 320)
+					console.log('继续')
+				}
+				
+			})
+		}
+		function sliderToItem(index) {
+
+		}
+		function autoSlider() {
+			var tvl = setInterval(function(){
+				itemsAnimate(width)
+			},1000)
+		}
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<div class="list">
+		<div class="item item1">1</div>
+		<div class="item item2">2</div>
+		<div class="item item3">3</div>
+	</div>
+	<div class="dots">
+		<div class="dot active">1</div>
+		<div class="dot">2</div>
+		<div class="dot">3</div>
+	</div>
+</div>
+</body>
+</html>
