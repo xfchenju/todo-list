@@ -10,23 +10,39 @@
 				e.preventDefault()
 				var $dot = e.target
 				var isDot = $($dot).hasClass('dot')
-				var activeDotIndex = $('.dots').find('.active').index()
-				if(isDot) {
+				var oldActiveIndex = $('.dots').find('.active').index()
+				if(isDot && moveNum == 0) {
+					console.log(moveNum, 'moveNum1')
 					addActiveClass($dot)
-					var index = $($dot).index()
-					var $item = $('.list').children()[index]
+					var newActiveIndex = $($dot).index()
+					var moveIndex = oldActiveIndex - newActiveIndex
+					var $item = $('.list').children()[newActiveIndex]
+					var moveLength = itemWidth * moveIndex
+					console.log(moveLength)
 					var diffLeft = 0 - parseInt($($item).css('left'))
-					itemsAnimate(diffLeft)
+					var option = {duration: 640, complete:()=>{
+						if(moveNum < $('.item').length - 1) {
+							moveNum++
+						}else{
+							moveNum = 0
+						}
+						console.log(moveNum, 'moveNum3')
+					}}
+					console.log(moveNum, 'moveNum2')
+					$('.item').each(function() {
+						var itemOldLength = $(this).css('left')
+						var actualMoveLength = parseInt(itemOldLength) + parseInt(moveLength) + 'px'
+						$(this).animate({left: actualMoveLength}, option)
+					})
 				}
-
-				/*$('.list').children()
-				$('.item3').animate({left: "640px"}, 320)*/
 			})
 			initItemsLeft()
-			autoSlider()
+			/*autoSlider()*/
 		})
 		var width = 640,
-			time = 320
+			itemWidth = 640,
+			time = 320,
+			moveNum = 0
 		function initItemsLeft() {
 			$('.item').each(function(){
 				var index = $(this).index()
@@ -40,7 +56,6 @@
 		}
 		function itemsAnimate(diffLeft) {
 			var length = $('.list .item').length
-
 			$('.item').each(function(){
 				var oldLeft = $(this).css('left')
 				var newLeft = parseInt(diffLeft) + parseInt(oldLeft)
